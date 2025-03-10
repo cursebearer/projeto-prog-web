@@ -16,7 +16,7 @@ Documentação do projeto de Programação Web que tera o intuito de realizar um
 - **RF06**: Implementar um sistema de notificações para lembrar o usuário de treinos e refeições.
 - **RF07**: Criar uma funcionalidade para exportar relatórios de desempenho em PDF/CSV.
 
-### ⚙️ 2.2 Requisitos Não Funcionais (RNFs)
+###  2.2 Requisitos Não Funcionais (RNFs)
 - **RNF01**: O sistema deve ser responsivo para dispositivos móveis.
 - **RNF02**: O banco de dados deve garantir integridade e segurança dos dados.
 - **RNF03**: As requisições ao servidor devem ter tempo de resposta inferior a 2 segundos.
