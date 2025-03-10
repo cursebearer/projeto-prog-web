@@ -38,8 +38,8 @@ O sistema adotará uma **arquitetura monolítica** inicialmente, onde o backend,
 |-------------|------------------|
 | **Next.js** | Permite Server Side Rendering (SSR), facilitando SEO e desempenho. |
 | **Node.js** | Alta escalabilidade e compatibilidade com o ecossistema JavaScript. |
-| **PostgreSQL** | Banco de dados relacional confiável e robusto. |
-| **Docker** | Facilita a implantação do ambiente e isolamento de dependências. |
+| **PostgreSQL** | Banco de dados relacional. |
+| **Docker** | Implantação do ambiente. |
 
 ---
 
