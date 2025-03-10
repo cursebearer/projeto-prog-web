@@ -47,10 +47,10 @@ O sistema adotará uma **arquitetura monolítica** inicialmente, onde o backend,
 
 | Semana | Atividade |
 |--------|-------------------------------------------------------------|
-| 1 - 2  | Criar estrutura do banco de dados e desenvolver API REST. |
-| 3 - 4  | Implementar o frontend inicial (cadastro de treinos e refeições). |
-| 5 - 6  | Criar dashboard de acompanhamento com gráficos e relatórios. |
-| 7 - 8  | Realizar testes, ajustes e implantação final. |
+| 1 - 3  | Criar estrutura do banco de dados e desenvolver API REST  |
+| 3 - 5 | Implementar o frontend baseado no design criado no Figma. |
+| 5 - 6 | Realizar a integração o frontend com o backend. |
+| 6 - 8  | Realizar testes, ajustes, implantação final e validações. |
 
 ---
 
