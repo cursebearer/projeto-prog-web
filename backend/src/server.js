@@ -1,8 +1,10 @@
 import express from 'express';
-import sequelize from './config/database.js'; 
+import cors from 'cors'; 
+import sequelize from './config/sequelize.js';
 import router from './routes/index.js';
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 app.use('/healthenv', router);

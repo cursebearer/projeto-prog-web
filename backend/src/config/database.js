@@ -1,11 +1,7 @@
-import { Sequelize } from 'sequelize';
-
-const sequelize = new Sequelize({
+export default {
   dialect: "postgres",
-  host: "localhost", 
+  host: "localhost",
   username: "healthenv",
   password: "healthenv",
   database: "healthenv",
-});
-
-export default sequelize;
+};

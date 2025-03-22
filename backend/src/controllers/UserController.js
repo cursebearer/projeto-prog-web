@@ -45,9 +45,9 @@ export const updateUser = async (req, res) => {
     try {
         const user = await User.update(
             {
-                name: req.body.name,
-                age: req.body.age,
+                nome: req.body.nome,
                 email: req.body.email,
+                senha: req.body.senha,
             },
             {
                 where: {
