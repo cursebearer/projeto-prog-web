@@ -9,10 +9,10 @@ import {
 
 const router = express.Router();
 
-router.post("/dailylog", createDailyLog);
-router.get("/dailylogs", getAllDailyLogs);
-router.get("/dailylog/:id", getDailyLogById);
-router.put("/dailylog/:id", updateDailyLog);
-router.delete("/dailylog/:id", deleteDailyLog);
+router.post("/", createDailyLog);
+router.get("/", getAllDailyLogs);
+router.get("/:id", getDailyLogById);
+router.put("/:id", updateDailyLog);
+router.delete("/:id", deleteDailyLog);
 
 export default router;

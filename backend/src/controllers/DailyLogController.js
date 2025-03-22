@@ -43,7 +43,7 @@ export const deleteDailyLog = async (req, res) => {
     const dailyLog = await DailyLog.destroy({
       where: { id: req.params.id },
     });
-    res.status(200).json({ dailyLog });
+    res.status(200).json({ message: 'Daily log deleted successfully' });
   } catch (err) {
     res.status(400).json(err);
   }

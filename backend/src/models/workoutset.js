@@ -14,7 +14,7 @@ WorkoutSet.init({
   carga: DataTypes.DECIMAL,
 }, {
   sequelize,
-  modelName: 'WorkoutSet',
+  modelName: 'Workout_sets',
 });
 
 export default WorkoutSet;

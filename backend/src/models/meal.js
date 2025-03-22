@@ -12,7 +12,7 @@ Meal.init({
   tipo_refeicao: DataTypes.STRING,
 }, {
   sequelize,
-  modelName: 'Meal',
+  modelName: 'Meals',
 });
 
 export default Meal;

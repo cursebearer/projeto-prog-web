@@ -13,7 +13,7 @@ MealItem.init({
   quantidade: DataTypes.STRING,
 }, {
   sequelize,
-  modelName: 'MealItem',
+  modelName: 'Meal_items',
 });
 
 export default MealItem;
