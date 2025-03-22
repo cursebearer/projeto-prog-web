@@ -1,17 +1,22 @@
-import { Sequelize } from "sequelize";
-import dbConfig from "./config/dbConfig.js"; 
+import express from 'express';
+import sequelize from './config/database.js'; 
+import router from './routes/index.js';
 
-const sequelize = new Sequelize(dbConfig);
+const app = express();
 
-async function connectDB() {
-  try {
-    await sequelize.authenticate();
-    console.log("Banco de dados conectado com sucesso!");
-  } catch (error) {
-    console.error("Erro ao conectar ao banco:", error);
-  }
-}
+app.use(express.json());
+app.use('/healthenv', router);
 
-connectDB();
+const port = 3000;
 
-export default sequelize;
+sequelize
+.authenticate()
+.then( () => {
+    console.log("Banco de dados conectado")
+    app.listen(port, () => {
+        console.log("Servidor rodando na porta " + port);
+      })
+})
+.catch( (err) => {
+    console.log("Erro ao conectar banco de dados", error)
+})
