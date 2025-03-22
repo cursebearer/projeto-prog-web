@@ -14,7 +14,7 @@ DailyLog.init({
   horas_sono: DataTypes.DECIMAL,
 }, {
   sequelize,
-  modelName: 'DailyLog',
+  modelName: 'Daily_logs',
 });
 
 export default DailyLog;
