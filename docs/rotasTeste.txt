@@ -1,0 +1,41 @@
+Rotas de usuarios
+
+post http://localhost:3000/healthenv/users
+get http://localhost:3000/healthenv/users
+put http://localhost:3000/healthenv/users/id
+delete http://localhost:3000/healthenv/users/id
+
+Rodas de Daily logs
+
+post http://localhost:3000/healthenv/dailylogs
+get http://localhost:3000/healthenv/dailylogs
+put http://localhost:3000/healthenv/dailylogs/id
+delete http://localhost:3000/healthenv/dailylogs/id
+
+Rota de Workouts
+
+post http://localhost:3000/healthenv/workouts
+get  http://localhost:3000/healthenv/workouts
+put  http://localhost:3000/healthenv/workouts/id
+delete http://localhost:3000/healthenv/workouts/id
+
+Rota de Workouts Sets
+
+post http://localhost:3000/healthenv/workoutsets
+get  http://localhost:3000/healthenv/workoutsets
+put  http://localhost:3000/healthenv/workoutsets/id
+delete http://localhost:3000/healthenv/workoutsets/id
+
+Rota de Meals
+
+post http://localhost:3000/healthenv/meals
+get  http://localhost:3000/healthenv/meals
+put  http://localhost:3000/healthenv/meals/id
+delete http://localhost:3000/healthenv/meals/id
+
+Rota de Meals Items
+
+post http://localhost:3000/healthenv/mealitems
+get  http://localhost:3000/healthenv/mealitems
+put  http://localhost:3000/healthenv/mealitems/id
+delete http://localhost:3000/healthenv/mealitems/id
