@@ -39,3 +39,53 @@ post http://localhost:3000/healthenv/mealitems
 get  http://localhost:3000/healthenv/mealitems
 put  http://localhost:3000/healthenv/mealitems/id
 delete http://localhost:3000/healthenv/mealitems/id
+
+Exemplos de post
+
+Users:
+
+{
+  "nome": "Pedrao",
+  "email": "testando123@gmail.com",
+  "senha": "123456"
+}
+
+Daily logs: 
+
+{
+  "user_id": 5,
+  "data": "2025-03-22",
+  "agua_consumida": 2.5,
+  "horas_sono": 8
+}
+
+Workouts:
+
+{
+  "daily_log_id": 3,
+  "titulo": "Treino de Peito"
+}
+
+Workout Sets:
+
+{
+  "workout_id": 1,
+  "nome_exercicio": "Supino reto",
+  "repeticoes": 12,
+  "carga": 80
+}
+
+Meals: 
+
+{
+  "daily_log_id": 3,
+  "tipo_refeicao": "Almoço"
+}
+
+Meal Items:
+
+{
+  "meal_id": 6,
+  "nome_alimento": "Arroz",
+  "quantidade": "200g"
+}
