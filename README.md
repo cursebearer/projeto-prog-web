@@ -40,7 +40,13 @@ Ele foi desenvolvido para fornecer a funcionalidade de sincronizar os seus trein
    ```
    Isso iniciará um contêiner PostgreSQL rodando o banco de dados que sera utilizado no programa.
 
-3. Para parar os contêineres:
+2. Apos o banco de dados estar funcionando com sucesso, execute:
+   ```sh
+   npx sequelize-cli db:migrate
+   ```
+   Isso criara as tabelas dentro do banco de dados.
+
+4. Para parar os contêineres:
    ```sh
    docker-compose down
    ```
