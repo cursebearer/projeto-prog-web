@@ -1,22 +1,22 @@
 import express from 'express';
-import userRoutes from './userRoutes.js';
+import authRoutes from './authRotes.js';
 import dailyLogRoutes from './dailyLogRoutes.js';
 import workoutRoutes from './workoutRoutes.js';
 import workoutSetRoutes from './workoutSetRoutes.js';
 import mealRoutes from './mealRoutes.js';
 import mealItemRoutes from './mealItemRoutes.js';
+import authMiddleware from '../middleware/authMiddleware.js';
 
 const router = express.Router();
 
-router.get('/', (req, res) => {
-  return res.json({ message: "Servidor rodando" });
-});
+router.get('/', (req, res) => res.json({ message: "Servidor rodando" }));
 
-router.use('/users', userRoutes);
-router.use('/dailylogs', dailyLogRoutes);
-router.use('/workouts', workoutRoutes);
-router.use('/workoutsets', workoutSetRoutes);
-router.use('/meals', mealRoutes);
-router.use('/mealitems', mealItemRoutes);
+router.use('/auth', authRoutes); 
+
+router.use('/dailylogs', authMiddleware, dailyLogRoutes);
+router.use('/workouts', authMiddleware, workoutRoutes);
+router.use('/workoutsets', authMiddleware, workoutSetRoutes);
+router.use('/meals', authMiddleware, mealRoutes);
+router.use('/mealitems', authMiddleware, mealItemRoutes);
 
 export default router;
