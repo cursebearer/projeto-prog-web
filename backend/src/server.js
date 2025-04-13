@@ -22,3 +22,5 @@ sequelize
 .catch( (err) => {
     console.log("Erro ao conectar banco de dados", error)
 })
+
+export { app, sequelize };

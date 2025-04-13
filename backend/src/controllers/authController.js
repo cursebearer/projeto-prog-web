@@ -9,6 +9,10 @@ export const registerUser = async (req, res) => {
   try {
     const { nome, email, senha } = req.body;
 
+    if (!nome || !email || !senha) {
+      return res.status(400).json({ message: 'Todos os campos são obrigatórios' });
+    }
+
     const existingUser = await User.findOne({ where: { email } });
     if (existingUser) {
       return res.status(400).json({ message: 'Email já cadastrado' });
