@@ -1,0 +1,89 @@
+@import '../variables.scss';
+
+.dashboardContainer {
+  padding: 2rem;
+  background-color: $background-color;
+  color: $text-color;
+}
+
+.title {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+}
+
+.card {
+  background-color: $secondary-color;
+  border-radius: 8px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card h2 {
+  margin-bottom: 1rem;
+}
+
+.card ul {
+  list-style: none;
+  padding: 0;
+}
+
+.card li {
+  margin-bottom: 0.5rem;
+}
+
+/* Botões */
+.primaryButton {
+  background-color: $primary-color;
+  color: $text-color;
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.primaryButton:hover {
+  background-color: darken($primary-color, 10%);
+}
+
+.secondaryButton {
+  background-color: $tertiary-color;
+  color: $text-color;
+  border: none;
+  padding: 0.8rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.secondaryButton:hover {
+  background-color: darken($tertiary-color, 10%);
+}
+
+.item {
+  background-color: $tertiary-color;
+  border-radius: 4px;
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.item h3 {
+  margin: 0;
+  font-size: 1.1rem;
+}
+
+.item p {
+  margin: 0.5rem 0 0;
+  font-size: 0.9rem;
+  color: $text-muted;
+}

@@ -8,9 +8,12 @@ export const dailyLogApi = {
       body: JSON.stringify(dailyLog),
     }),
 
-  getAll: (): Promise<DailyLog[]> => fetchWithAuth("/dailylogs"),
+  getAll: async (): Promise<{ dailyLogs: DailyLog[] }> => {
+    const response = await fetchWithAuth('/dailylogs');
+    return response.json();
+  },
 
-  getById: (id: number): Promise<DailyLog> => fetchWithAuth(`/dailylogs/${id}`),
+  getById: (id: number): Promise<DailyLog[]> => fetchWithAuth(`/dailylogs/user/${id}`),
 
   update: (id: number, dailyLog: Partial<DailyLog>): Promise<DailyLog> =>
     fetchWithAuth(`/dailylogs/${id}`, {

@@ -18,12 +18,16 @@ export const getAllDailyLogs = async (req, res) => {
   }
 };
 
-export const getDailyLogById = async (req, res) => {
+export const getDailyLogsByUserId = async (req, res) => {
   try {
-    const dailyLog = await DailyLog.findByPk(req.params.id);
-    res.status(200).json({ dailyLog });
-  } catch (err) {
-    res.status(400).json(err);
+    const { id } = req.params;
+    const dailyLogs = await DailyLog.findAll({ where: { user_id: id } });
+    if (!dailyLogs || dailyLogs.length === 0) {
+      return res.status(404).json({ message: "Nenhum daily log encontrado para este usuário" });
+    }
+    res.status(200).json(dailyLogs);
+  } catch (error) {
+    res.status(500).json({ message: "Erro ao buscar daily logs", error });
   }
 };
 
