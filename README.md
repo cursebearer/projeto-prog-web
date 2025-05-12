@@ -13,12 +13,14 @@ Ele foi desenvolvido para fornecer a funcionalidade de sincronizar os seus trein
 # Tecnologias
 * Node.js
 * Next.js
+* Sassy CSS
 * Docker
 * PostgreSQL
 
 # Como executar o projeto
-## Configuração e inicialização do backend
-1. Clone o repositório:
+## Configuração e inicialização do projeto
+
+1. Clone o repositório e entre no backend:
    ```sh
    git clone https://github.com/seu-usuario/seu-repositorio.git
    cd backend
@@ -49,6 +51,17 @@ Ele foi desenvolvido para fornecer a funcionalidade de sincronizar os seus trein
 4. Para parar os contêineres:
    ```sh
    docker-compose down
+   ```
+## Configuração e inicialização do frontend
+
+1. Instale as dependências e entre frontend:
+   ```sh
+   cd frontend
+   npm install
+   ```
+3. Inicie o servidor em modo desenvolvimento:
+   ```sh
+   npm run dev
    ```
 
 # Versões e atualizações
