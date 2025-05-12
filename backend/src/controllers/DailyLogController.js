@@ -18,6 +18,15 @@ export const getAllDailyLogs = async (req, res) => {
   }
 };
 
+export const getDailyLogById = async (req, res) => {
+  try {
+    const dailylog = await DailyLog.findByPk(req.params.id);
+    res.status(200).json({ dailylog });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+};
+
 export const getDailyLogsByUserId = async (req, res) => {
   try {
     const { id } = req.params;
