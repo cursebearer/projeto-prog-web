@@ -1,0 +1,212 @@
+@import '../variables.scss';
+
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: $background-color;
+  color: $text-color;
+  min-height: 100vh;
+}
+
+.hero {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 4rem;
+  gap: 21rem;
+  padding: 0 10rem;
+  @media (max-width: 768px) {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+.heroText {
+  flex: 1;
+
+  h1 {
+    font-size: 3rem;
+    line-height: 1.2;
+
+    span {
+      color: $primary-color;
+    }
+  }
+
+  p {
+    margin-top: 1rem;
+    font-size: 1.5rem;
+    color: $text-muted;
+  }
+
+  .cta {
+    margin-top: 2rem;
+    padding: 0.8rem 1.5rem;
+    background: $primary-color;
+    color: #fff;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+}
+
+.arnoldImage {
+  border-radius: 20px; 
+  border: 1px solid $primary-color;
+}
+
+.features {
+  margin-top: 5rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.featureBox {
+  background: $secondary-color;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;
+  gap: 29rem;
+  border: 1px solid $primary-color;
+
+  h2 {
+    margin-bottom: 0.5rem;
+    color: $primary-color;
+    font-size: 1.5rem;
+  }
+
+  p {
+    color: $text-muted;
+    font-size: 1rem;
+  }
+
+  .featureContent {
+    flex: 1;
+  }
+
+  .featureIcons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    img {
+      width: 100px;
+      height: 100px;
+    }
+  }
+}
+
+.cardSection {
+  margin-top: 5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  align-items: center;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  gap: 3rem;
+  background: #1a1a1a;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 100%;
+  max-width: 1200px;
+  color: #fff;
+  border: 1px solid $primary-color;
+}
+
+.cardContent {
+  flex: 1;
+  font-size: 1.2rem;
+  line-height: 1.5;
+}
+
+.cardDetails {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: center; 
+}
+
+.cardBox {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  color: #000;
+  flex: 0 0 200px; 
+  text-align: center;
+
+  h3 {
+    color: #000;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    text-align: left;
+
+    li {
+      margin-bottom: 0.5rem;
+      font-size: 1.1rem;
+      border-bottom: 1px solid #000; 
+      padding-bottom: 0.5rem; 
+    }
+  }
+}
+
+.adCardSection {
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  gap: 8rem;
+  flex-wrap: wrap;
+}
+
+.adCard {
+  background: #1a1a1a;
+  border: 2px solid $primary-color;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 500px;
+  text-align: center;
+  color: #fff;
+
+  h3 {
+    color: $primary-color;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+
+   h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+  }
+
+  p {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    line-height: 2rem;
+    text-align: left;
+  }
+
+  img {
+    margin-top: 1rem;
+    width: 150px;
+    height: 150px;
+  }
+}

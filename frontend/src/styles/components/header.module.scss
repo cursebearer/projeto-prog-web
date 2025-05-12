@@ -1,0 +1,49 @@
+@import '../variables.scss';
+
+.header {
+  width: 100%;
+  max-width: 1540px;
+  padding: 1.5rem 10rem; 
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: $secondary-color;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  a {
+    color: $text-color;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.5rem;
+  }
+
+  .cta {
+    background-color: $primary-color;
+    color: $background-color;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column; 
+    padding: 1rem;
+  }
+
+  .nav {
+    gap: 1rem;
+  }
+}

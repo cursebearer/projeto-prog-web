@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/healthenv', router);
 
-const port = 3000;
+const port = 5000;
 
 sequelize
 .authenticate()
