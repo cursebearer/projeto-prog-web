@@ -30,10 +30,9 @@ export default function DashboardPage() {
         return;
       }
 
-      const userId = decodedToken.id; // Obtém o ID do usuário do token
+      const userId = decodedToken.id;
 
-      // Faz a chamada à API
-      const dailyLogs = await dailyLogApi.getById(userId); // Busca os dailyLogs pelo ID do usuário
+      const dailyLogs = await dailyLogApi.getById(userId); 
       const workoutsData = await workoutApi.getAll();
       const mealsData = await mealApi.getAll();
 
