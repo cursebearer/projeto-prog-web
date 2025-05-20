@@ -13,7 +13,7 @@ export const dailyLogApi = {
     return response.json();
   },
 
-  getById: (id: number): Promise<DailyLog[]> => fetchWithAuth(`/dailylogs/user/${id}`),
+  getByUserId: (id: number): Promise<DailyLog[]> => fetchWithAuth(`/dailylogs/user/${id}`),
 
   update: (id: number, dailyLog: Partial<DailyLog>): Promise<DailyLog> =>
     fetchWithAuth(`/dailylogs/${id}`, {

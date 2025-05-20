@@ -4,7 +4,8 @@ import {
   getAllMeals, 
   getMealById, 
   updateMeal, 
-  deleteMeal 
+  deleteMeal,
+  getMealsByUserId
 } from '../controllers/MealController.js';
 
 const router = express.Router();
@@ -12,6 +13,7 @@ const router = express.Router();
 router.post('/', createMeal);
 router.get('/', getAllMeals);
 router.get('/:id', getMealById);
+router.get("/user/:id", getMealsByUserId);
 router.put('/:id', updateMeal);
 router.delete('/:id', deleteMeal);
 

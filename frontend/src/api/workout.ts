@@ -10,7 +10,7 @@ export const workoutApi = {
 
   getAll: (): Promise<Workout[]> => fetchWithAuth("/workouts"),
 
-  getById: (id: number): Promise<Workout> => fetchWithAuth(`/workouts/${id}`),
+  getByUserId: (userId: number) => fetchWithAuth(`/workouts/user/${userId}`),
 
   update: (id: number, workout: Partial<Workout>): Promise<Workout> =>
     fetchWithAuth(`/workouts/${id}`, {

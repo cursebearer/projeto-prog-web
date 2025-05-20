@@ -1,4 +1,5 @@
 import Meal from "../models/meal.js";
+import DailyLog from "../models/dailylog.js";
 
 export const createMeal = async (req, res) => {
   try {
@@ -24,6 +25,24 @@ export const getMealById = async (req, res) => {
     res.status(200).json({ meal });
   } catch (err) {
     res.status(400).json(err);
+  }
+};
+
+export const getMealsByUserId = async (req, res) => {
+  try {
+    const { id } = req.params; 
+
+    const dailyLogs = await DailyLog.findAll({ where: { user_id: id } });
+    const dailyLogIds = dailyLogs.map(dl => dl.id);
+
+    if (dailyLogIds.length === 0) {
+      return res.status(404).json({ message: "Nenhum meal encontrado para este usuário" });
+    }
+
+    const meals = await Meal.findAll({ where: { daily_log_id: dailyLogIds } });
+    res.status(200).json(meals);
+  } catch (error) {
+    res.status(500).json({ message: "Erro ao buscar meals", error });
   }
 };
 

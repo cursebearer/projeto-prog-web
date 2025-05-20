@@ -19,4 +19,11 @@ router.use('/workoutsets', authMiddleware, workoutSetRoutes);
 router.use('/meals', authMiddleware, mealRoutes);
 router.use('/mealitems', authMiddleware, mealItemRoutes);
 
+// popular banco para teste pratico
+// router.use('/dailylogs',  dailyLogRoutes);
+// router.use('/workouts',  workoutRoutes);
+// router.use('/workoutsets', workoutSetRoutes);
+// router.use('/meals',  mealRoutes);
+// router.use('/mealitems', mealItemRoutes);
+
 export default router;

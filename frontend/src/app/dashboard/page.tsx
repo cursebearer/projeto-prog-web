@@ -8,6 +8,15 @@ import { mealApi } from '@/api/meal'
 import { jwtDecode } from 'jwt-decode';
 import styles from '../../styles/pages/dashboard.module.scss'
 
+function formatDate(dateString: string) {
+  const date = new Date(dateString);
+  return date.toLocaleDateString('pt-BR', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+  });
+}
+
 export default function DashboardPage() {
   const [summary, setSummary] = useState<any>(null)
   const [workouts, setWorkouts] = useState<any[]>([])
@@ -32,9 +41,9 @@ export default function DashboardPage() {
 
       const userId = decodedToken.id;
 
-      const dailyLogs = await dailyLogApi.getById(userId); 
-      const workoutsData = await workoutApi.getAll();
-      const mealsData = await mealApi.getAll();
+      const dailyLogs = await dailyLogApi.getByUserId(userId); 
+      const workoutsData = await workoutApi.getByUserId(userId);
+      const mealsData = await mealApi.getByUserId(userId);
 
       console.log('Daily Logs:', dailyLogs);
 
@@ -47,7 +56,7 @@ export default function DashboardPage() {
 
       setSummary(summaryData);
       setWorkouts(workoutsData.slice(0, 3));
-      setMeals(mealsData.slice(0, 3));
+      setMeals(mealsData.slice(-3).reverse());
     } catch (error) {
       console.error('Erro ao buscar dados:', error);
     }
@@ -103,6 +112,7 @@ export default function DashboardPage() {
               <div key={workout.id} className={styles.item}>
                 <h3>{workout.titulo}</h3>
                 <p>{workout.workout_sets?.length || 0} exercícios • {workout.workout_sets?.reduce((acc: number, set: any) => acc + set.repeticoes, 0)} séries</p>
+                <p>{formatDate(workout.createdAt)}</p>
               </div>
             ))
           ) : (
@@ -118,6 +128,7 @@ export default function DashboardPage() {
               <div key={meal.id} className={styles.item}>
                 <h3>{meal.tipo_refeicao}</h3>
                 <p>{meal.meal_items?.map((item: any) => item.nome_alimento).join(', ')}</p>
+                <p>{formatDate(meal.createdAt)}</p>
               </div>
             ))
           ) : (

@@ -10,7 +10,7 @@ export const mealApi = {
 
   getAll: (): Promise<Meal[]> => fetchWithAuth("/meals"),
 
-  getById: (id: number): Promise<Meal> => fetchWithAuth(`/meals/${id}`),
+  getByUserId: (userId: number) => fetchWithAuth(`/meals/user/${userId}`),
 
   update: (id: number, meal: Partial<Meal>): Promise<Meal> =>
     fetchWithAuth(`/meals/${id}`, {
@@ -22,4 +22,5 @@ export const mealApi = {
     fetchWithAuth(`/meals/${id}`, {
       method: "DELETE",
     }),
+
 };
