@@ -1,5 +1,5 @@
 import express from 'express';
-import authRoutes from './authRotes.js';
+import authRoutes from './authRoutes.js';
 import dailyLogRoutes from './dailyLogRoutes.js';
 import workoutRoutes from './workoutRoutes.js';
 import workoutSetRoutes from './workoutSetRoutes.js';

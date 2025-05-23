@@ -59,7 +59,7 @@ export const updateMeal = async (req, res) => {
 
 export const deleteMeal = async (req, res) => {
   try {
-    const meal = await Meal.destroy({
+    await Meal.destroy({
       where: { id: req.params.id },
     });
     res.status(200).json({ message: 'Meal deleted successfully' });

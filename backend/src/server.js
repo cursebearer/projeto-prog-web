@@ -5,22 +5,23 @@ import router from './routes/index.js';
 
 const app = express();
 app.use(cors());
-
 app.use(express.json());
 app.use('/healthenv', router);
 
 const port = 5000;
 
-sequelize
-.authenticate()
-.then( () => {
-    console.log("Banco de dados conectado")
-    app.listen(port, () => {
+if (process.env.NODE_ENV !== 'test') {
+  sequelize
+    .authenticate()
+    .then(() => {
+      console.log("Banco de dados conectado");
+      app.listen(port, () => {
         console.log("Servidor rodando na porta " + port);
-      })
-})
-.catch( (err) => {
-    console.log("Erro ao conectar banco de dados", error)
-})
+      });
+    })
+    .catch((error) => {
+      console.log("Erro ao conectar banco de dados", error);
+    });
+}
 
 export { app, sequelize };

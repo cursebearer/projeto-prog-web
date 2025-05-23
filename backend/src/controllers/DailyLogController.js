@@ -21,6 +21,9 @@ export const getAllDailyLogs = async (req, res) => {
 export const getDailyLogById = async (req, res) => {
   try {
     const dailylog = await DailyLog.findByPk(req.params.id);
+    if (!dailylog) {
+      return res.status(404).json({ message: "Daily log não encontrado" });
+    }
     res.status(200).json({ dailylog });
   } catch (err) {
     res.status(400).json(err);
@@ -42,10 +45,13 @@ export const getDailyLogsByUserId = async (req, res) => {
 
 export const updateDailyLog = async (req, res) => {
   try {
-    const dailyLog = await DailyLog.update(req.body, {
+    const [updated] = await DailyLog.update(req.body, {
       where: { id: req.params.id },
     });
-    res.status(200).json({ dailyLog });
+    if (!updated) {
+      return res.status(404).json({ message: "Daily log não encontrado" });
+    }
+    res.status(200).json({ message: "Daily log atualizado com sucesso" });
   } catch (err) {
     res.status(400).json(err);
   }
@@ -53,7 +59,7 @@ export const updateDailyLog = async (req, res) => {
 
 export const deleteDailyLog = async (req, res) => {
   try {
-    const dailyLog = await DailyLog.destroy({
+    await DailyLog.destroy({
       where: { id: req.params.id },
     });
     res.status(200).json({ message: 'Daily log deleted successfully' });

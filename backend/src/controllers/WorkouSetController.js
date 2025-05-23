@@ -40,7 +40,7 @@ export const updateWorkoutSet = async (req, res) => {
 
 export const deleteWorkoutSet = async (req, res) => {
   try {
-    const workoutSet = await WorkoutSet.destroy({
+    await WorkoutSet.destroy({
       where: { id: req.params.id },
     });
     res.status(200).json({ message: 'WorkoutSet deleted successfully' });

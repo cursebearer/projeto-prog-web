@@ -63,7 +63,7 @@ export const updateWorkout = async (req, res) => {
 
 export const deleteWorkout = async (req, res) => {
   try {
-    const workout = await Workout.destroy({
+    await Workout.destroy({
       where: { id: req.params.id },
     });
     res.status(200).json({ message: 'Workout deleted successfully' });
