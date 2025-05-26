@@ -1,0 +1,368 @@
+@import '../variables.scss';
+
+.container {
+  min-height: 100vh;
+  background-color: $background-color;
+  color: $text-color;
+  padding: 2rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.backButton {
+  background-color: $tertiary-color;
+  color: $text-muted;
+  border: none;
+  padding: 0.75rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: darken($tertiary-color, 5%);
+    color: $text-color;
+  }
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.form {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.card {
+  background-color: $secondary-color;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+}
+
+.cardHeader {
+  padding: 1.5rem;
+  border-bottom: 1px solid $tertiary-color;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cardContent {
+  padding: 1.5rem;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.iconSmall {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+// Form Elements
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-weight: 500;
+    color: $text-color;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.input, .select {
+  background-color: $tertiary-color;
+  border: 1px solid darken($tertiary-color, 10%);
+  border-radius: 6px;
+  padding: 0.75rem;
+  color: $text-color;
+  font-size: 0.875rem;
+  transition: border-color 0.2s ease;
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+  }
+
+  &::placeholder {
+    color: $text-muted;
+  }
+}
+
+.inputSmall {
+  @extend .input;
+  width: 80px;
+  text-align: center;
+}
+
+.inputMedium {
+  @extend .input;
+  width: 150px;
+}
+
+// Buttons
+.addButton {
+  background-color: $primary-color;
+  color: $text-color;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+.removeButton {
+  background-color: #dc3545;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: darken(#dc3545, 10%);
+  }
+}
+
+.addSetButton {
+  background-color: $tertiary-color;
+  color: $text-muted;
+  border: none;
+  padding: 0.5rem 0.75rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: darken($tertiary-color, 5%);
+    color: $text-color;
+  }
+}
+
+.removeSetButton {
+  background-color: transparent;
+  color: #dc3545;
+  border: 1px solid #dc3545;
+  padding: 0.5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: #dc3545;
+    color: white;
+  }
+}
+
+// Workout Items
+.workoutItem {
+  background-color: $tertiary-color;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.workoutHeader {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  .input {
+    flex: 1;
+  }
+}
+
+.setsContainer {
+  .setsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    color: $text-color;
+  }
+}
+
+.setItem {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+
+  .input {
+    flex: 1;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Meal Items
+.mealItem {
+  background-color: $tertiary-color;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.mealHeader {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 1rem;
+
+  .select {
+    flex: 1;
+  }
+}
+
+.itemsContainer {
+  .itemsHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+    font-weight: 500;
+    color: $text-color;
+  }
+}
+
+.itemRow {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  margin-bottom: 0.5rem;
+
+  .input {
+    flex: 1;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+// Submit
+.submitContainer {
+  display: flex;
+  justify-content: center;
+  padding-top: 1rem;
+}
+
+.submitButton {
+  background-color: $primary-color;
+  color: $text-color;
+  border: none;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: background-color 0.2s ease;
+
+  &:hover:not(:disabled) {
+    background-color: darken($primary-color, 10%);
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+  }
+}
+
+// Responsive
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .setItem, .itemRow {
+    flex-direction: column;
+    align-items: stretch;
+
+    .input, .inputSmall, .inputMedium {
+      width: 100%;
+    }
+  }
+
+  .workoutHeader, .mealHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+}
