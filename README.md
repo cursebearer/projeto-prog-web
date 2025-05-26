@@ -17,7 +17,7 @@ Ele foi desenvolvido para fornecer a funcionalidade de sincronizar os seus trein
 * Docker
 * PostgreSQL
 
-# Como executar o projeto
+# Execução do projeto
 
 ## Executando o PostgreSQL com Docker Compose
 1. Certifique-se de que o Docker esta instalado.
@@ -61,11 +61,10 @@ Ele foi desenvolvido para fornecer a funcionalidade de sincronizar os seus trein
    docker-compose down
    ```
    
-## Configuração e inicialização do projeto
+## Configuração e inicialização do Backend
 
-1. Clone o repositório e entre no backend:
+1. Entre no backend usando o comando:
    ```sh
-   git clone https://github.com/seu-usuario/seu-repositorio.git
    cd backend
    ```
 2. Instale as dependências:
@@ -79,7 +78,7 @@ Ele foi desenvolvido para fornecer a funcionalidade de sincronizar os seus trein
 
 ## Configuração e inicialização do frontend
 
-1. Instale as dependências e entre frontend:
+1. Entre no frontend e instale as dependências:
    ```sh
    cd frontend
    npm install
