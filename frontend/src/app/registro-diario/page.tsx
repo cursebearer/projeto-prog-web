@@ -3,8 +3,15 @@
 import type React from "react"
 
 import { useState } from "react"
+import { useEffect } from "react"
 import { useRouter } from "next/navigation"
 import { Calendar, Droplets, Moon, Dumbbell, Utensils, Plus, Trash2, Save, ArrowLeft } from "lucide-react"
+import { dailyLogApi } from "@/api/dailylog"
+import { jwtDecode } from "jwt-decode"
+import { workoutApi } from "@/api/workout"
+import { workoutSetApi } from "@/api/workoutSet"
+import { mealApi } from "@/api/meal"
+import { mealItemApi } from "@/api/mealItem"
 import styles from "../../styles/pages/registro-diario.module.scss"
 
 interface WorkoutSet {
@@ -39,6 +46,7 @@ interface DailyLogData {
 export default function RegistroDiarioPage() {
   const router = useRouter()
   const [loading, setLoading] = useState(false)
+  const [userId, setUserId] = useState<number | null>(null)
 
   const [dailyLog, setDailyLog] = useState<DailyLogData>({
     data: new Date().toISOString().split("T")[0],
@@ -47,6 +55,29 @@ export default function RegistroDiarioPage() {
     workouts: [],
     meals: [],
   })
+
+  useEffect(() => {
+  const token = localStorage.getItem("token")
+
+  if (!token) {
+    alert("Você precisa estar logado para acessar essa página.")
+    router.push("/login")
+  } else {
+    try {
+      const decodedToken: any = jwtDecode(token)
+      if (!decodedToken.id) {
+        throw new Error("Token inválido")
+      }
+
+      setUserId(decodedToken.id)
+
+    } catch (err) {
+      console.error("Token inválido:", err)
+      alert("Sessão expirada ou token inválido.")
+      router.push("/login")
+    }
+  }
+}, [])
 
   // Funções para Treinos
   const addWorkout = () => {
@@ -159,25 +190,94 @@ export default function RegistroDiarioPage() {
   }
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setLoading(true)
+  e.preventDefault()
+  setLoading(true)
 
-    try {
-      // Aqui você faria a chamada para sua API
-      console.log("Dados para salvar:", dailyLog)
+  try {
+     if (!userId) {
+        alert("Você precisa estar logado.")
+        router.push("/login")
+        return
+      }
 
-      // Simular delay da API
-      await new Promise((resolve) => setTimeout(resolve, 1000))
+    // 1. Criar o registro diário com o dailyLogApi
+    const savedDailyLog = await dailyLogApi.create({
+      user_id: userId,
+      data: dailyLog.data,
+      agua_consumida: dailyLog.agua_consumida,
+      horas_sono: dailyLog.horas_sono,
+    })
 
-      alert("Registro salvo com sucesso!")
-      router.push("/dashboard")
-    } catch (error) {
-      console.error("Erro ao salvar:", error)
-      alert("Erro ao salvar registro")
-    } finally {
-      setLoading(false)
+    console.log("🧩 savedDailyLog completo:", savedDailyLog);
+
+    const savedDailyLogId = savedDailyLog.dailyLog.id;
+    if (!savedDailyLogId) {
+      console.error("Erro: savedDailyLog.id está undefined ou savedDailyLog é inválido", savedDailyLog);
+      return;
     }
+
+    for (const workout of dailyLog.workouts) {
+      const savedWorkout = await workoutApi.create({
+        daily_log_id: savedDailyLogId,
+        titulo: workout.titulo,
+      })
+
+      console.log("Workout completo:", savedWorkout);
+
+      const savedWorkoutId = savedWorkout.workout.id;
+      
+      for (const set of workout.sets) {
+        if (!savedWorkoutId) {
+      console.error("Erro: savedWorkout.id está undefined")
+      return
+    }
+
+    const workoutSet = await workoutSetApi.create({
+      workout_id: savedWorkoutId,
+      nome_exercicio: set.nome_exercicio,
+      repeticoes: set.repeticoes,
+      carga: set.carga,
+    })    
+    
+    console.log("Workout Set completo:", workoutSet);
+
+      }
+    }
+
+    for (const meal of dailyLog.meals) {
+      const savedMeal = await mealApi.create({
+        daily_log_id: savedDailyLogId,
+        tipo_refeicao: meal.tipo_refeicao,
+      })
+
+      console.log("Meal  completo:", savedMeal);
+
+      const savedMealId = savedMeal.meal.id;
+
+      if (!savedMealId) {
+      console.error("Erro: savedWorkout.id está undefined")
+      return
+    }
+      for (const item of meal.items) {
+        const mealItem = await mealItemApi.create({
+          meal_id: savedMealId,
+          nome_alimento: item.nome_alimento,
+          quantidade: item.quantidade,
+        })
+
+        console.log("Meal Item completo:", mealItem);
+      }
+    }
+
+    alert("Registro salvo com sucesso!")
+    router.push("/dashboard")
+  } catch (error) {
+    console.error("Erro ao salvar:", error)
+    alert("Erro ao salvar registro.")
+  } finally {
+    setLoading(false)
   }
+}
 
   return (
     <main className={styles.container}>

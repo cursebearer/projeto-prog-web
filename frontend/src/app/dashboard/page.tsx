@@ -3,7 +3,7 @@
 import type React from "react"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
-import { dailyLogApi } from "@/api/dailyLog"
+import { dailyLogApi } from "@/api/dailylog"
 import { workoutApi } from "@/api/workout"
 import { mealApi } from "@/api/meal"
 import { jwtDecode } from "jwt-decode"
@@ -177,7 +177,7 @@ export default function DashboardPage() {
           </div>
           <div className={styles.cardContent}>
             <div className={styles.actionsContainer}>
-              <button className={styles.primaryButton}>Novo Registro</button>
+              <button className={styles.primaryButton} onClick={() => router.push("/registro-diario")}>Novo Registro</button>
               <button className={styles.secondaryButton}>
                 <Eye className={styles.iconSmall} />
                 Ver Registros
@@ -238,7 +238,7 @@ export default function DashboardPage() {
                       <span className={styles.date}>{formatDate(meal.createdAt)}</span>
                     </div>
                     <p className={styles.itemDescription}>
-                      {meal.meal_items?.map((item: any) => item.nome_alimento).join(", ")}
+                      {meal.meal_items?.map((item: any) => item.nome_alimento).join(", ") || "Sem itens registrados"}
                     </p>
                   </div>
                 ))

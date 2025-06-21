@@ -2,7 +2,7 @@ import { Workout } from "@/types";
 import { fetchWithAuth } from "./fetchWithAuth";
 
 export const workoutApi = {
-  create: (workout: Omit<Workout, "id">): Promise<Workout> =>
+  create: (workout: Omit<Workout, "id">): Promise<{ workout : Workout }> =>
     fetchWithAuth("/workouts", {
       method: "POST",
       body: JSON.stringify(workout),

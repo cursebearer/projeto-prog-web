@@ -4,7 +4,8 @@ import {
   getAllWorkoutSets, 
   getWorkoutSetById, 
   updateWorkoutSet, 
-  deleteWorkoutSet 
+  deleteWorkoutSet,
+  getWorkoutSetsByWorkoutId 
 } from '../controllers/WorkouSetController.js';
 
 const router = express.Router();
@@ -12,6 +13,7 @@ const router = express.Router();
 router.post('/', createWorkoutSet);
 router.get('/', getAllWorkoutSets);
 router.get('/:id', getWorkoutSetById);
+router.get('/workout/:workoutId', getWorkoutSetsByWorkoutId);
 router.put('/:id', updateWorkoutSet);
 router.delete('/:id', deleteWorkoutSet);
 

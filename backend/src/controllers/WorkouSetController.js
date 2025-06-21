@@ -48,3 +48,14 @@ export const deleteWorkoutSet = async (req, res) => {
     res.status(400).json(err);
   }
 };
+
+export const getWorkoutSetsByWorkoutId = async (req, res) => {
+  try {
+    const workoutSets = await WorkoutSet.findAll({
+      where: { workout_id: req.params.workoutId },
+    });
+    res.status(200).json({ workoutSets });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+};

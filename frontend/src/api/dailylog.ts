@@ -2,11 +2,15 @@ import { DailyLog } from "@/types";
 import { fetchWithAuth } from "./fetchWithAuth";
 
 export const dailyLogApi = {
-  create: (dailyLog: Omit<DailyLog, "id">): Promise<DailyLog> =>
-    fetchWithAuth("/dailylogs", {
-      method: "POST",
-      body: JSON.stringify(dailyLog),
-    }),
+  create: async (dailyLog: Omit<DailyLog, "id">): Promise<{ dailyLog: DailyLog }> => {
+  const response = await fetchWithAuth("/dailylogs", {
+    method: "POST",
+    body: JSON.stringify(dailyLog),
+  });
+
+  console.log("Retorno da API:", response);
+  return response; 
+},
 
   getAll: async (): Promise<{ dailyLogs: DailyLog[] }> => {
     const response = await fetchWithAuth('/dailylogs');

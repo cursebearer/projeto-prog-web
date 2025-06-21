@@ -48,3 +48,14 @@ export const deleteMealItem = async (req, res) => {
     res.status(400).json(err);
   }
 };
+
+export const getMealItemsByMealId = async (req, res) => {
+  try {
+    const mealItems = await MealItem.findAll({
+      where: { meal_id: req.params.mealId },
+    });
+    res.status(200).json({ mealItems });
+  } catch (err) {
+    res.status(400).json(err);
+  }
+};

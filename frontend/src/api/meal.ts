@@ -2,7 +2,7 @@ import { Meal } from "@/types";
 import { fetchWithAuth } from "./fetchWithAuth";
 
 export const mealApi = {
-  create: (meal: Omit<Meal, "id">): Promise<Meal> =>
+  create: (meal: Omit<Meal, "id">): Promise<{ meal : Meal }> =>
     fetchWithAuth("/meals", {
       method: "POST",
       body: JSON.stringify(meal),
