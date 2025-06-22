@@ -1,11 +1,25 @@
-import WorkoutSet from "../models/workoutSet.js";
+import { WorkoutSet } from "../config/sequelize.js"; 
 
 export const createWorkoutSet = async (req, res) => {
   try {
-    const workoutSet = await WorkoutSet.create(req.body);
+    const { workout_id, nome_exercicio, repeticoes, carga } = req.body;
+
+    // Validação dos campos obrigatórios
+    if (!workout_id || !nome_exercicio || !repeticoes || !carga) {
+      return res.status(400).json({ message: "Campos obrigatórios estão faltando" });
+    }
+
+    const workoutSet = await WorkoutSet.create({
+      workout_id,
+      nome_exercicio,
+      repeticoes,
+      carga,
+    });
+
     res.status(200).json({ workoutSet });
   } catch (err) {
-    res.status(400).json(err);
+    console.error("Erro ao criar WorkoutSet:", err);
+    res.status(500).json({ message: "Erro ao criar WorkoutSet", error: err });
   }
 };
 

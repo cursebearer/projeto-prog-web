@@ -1,4 +1,4 @@
-import MealItem from "../models/mealItem.js";
+import { MealItem } from "../config/sequelize.js"; 
 
 export const createMealItem = async (req, res) => {
   try {

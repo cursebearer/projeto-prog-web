@@ -264,8 +264,7 @@ export default function RegistroDiarioPage() {
           nome_alimento: item.nome_alimento,
           quantidade: item.quantidade,
         })
-
-        console.log("Meal Item completo:", mealItem);
+        
       }
     }
 
@@ -322,7 +321,7 @@ export default function RegistroDiarioPage() {
                   id="agua"
                   step="0.1"
                   min="0"
-                  value={dailyLog.agua_consumida}
+                  value={dailyLog.agua_consumida || ""}
                   onChange={(e) => setDailyLog((prev) => ({ ...prev, agua_consumida: Number(e.target.value) }))}
                   className={styles.input}
                   placeholder="Ex: 2.5"
@@ -340,7 +339,7 @@ export default function RegistroDiarioPage() {
                   step="0.5"
                   min="0"
                   max="24"
-                  value={dailyLog.horas_sono}
+                  value={dailyLog.horas_sono || ""}
                   onChange={(e) => setDailyLog((prev) => ({ ...prev, horas_sono: Number(e.target.value) }))}
                   className={styles.input}
                   placeholder="Ex: 8"
@@ -400,19 +399,19 @@ export default function RegistroDiarioPage() {
                       />
                       <input
                         type="number"
-                        value={set.repeticoes}
+                        value={set.repeticoes || ""}
                         onChange={(e) => updateWorkoutSet(workoutIndex, setIndex, "repeticoes", Number(e.target.value))}
                         className={styles.inputSmall}
-                        placeholder="Reps"
+                        placeholder="Repetições"
                         min="1"
                         required
                       />
                       <input
                         type="number"
-                        value={set.carga}
+                        value={set.carga || ""}
                         onChange={(e) => updateWorkoutSet(workoutIndex, setIndex, "carga", Number(e.target.value))}
                         className={styles.inputSmall}
-                        placeholder="Carga (kg)"
+                        placeholder="Carga/Peso (kg)"
                         step="0.5"
                         min="0"
                       />
