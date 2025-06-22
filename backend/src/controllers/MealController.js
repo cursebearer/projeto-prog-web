@@ -1,4 +1,4 @@
-import Meal from "../models/meal.js";
+import { Meal, MealItem } from "../config/sequelize.js"; 
 import DailyLog from "../models/dailylog.js";
 
 export const createMeal = async (req, res) => {
@@ -39,10 +39,20 @@ export const getMealsByUserId = async (req, res) => {
       return res.status(404).json({ message: "Nenhum meal encontrado para este usuário" });
     }
 
-    const meals = await Meal.findAll({ where: { daily_log_id: dailyLogIds } });
+    const meals = await Meal.findAll({
+      where: { daily_log_id: dailyLogIds },
+      include: [
+        {
+          model: MealItem,
+          as: "meal_items", 
+        },
+      ],
+    });
+
     res.status(200).json(meals);
   } catch (error) {
-    res.status(500).json({ message: "Erro ao buscar meals", error });
+    console.error("Erro ao buscar refeições:", error);
+    res.status(500).json({ message: "Erro ao buscar refeições", error });
   }
 };
 

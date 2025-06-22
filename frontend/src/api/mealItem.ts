@@ -22,4 +22,7 @@ export const mealItemApi = {
     fetchWithAuth(`/mealitems/${id}`, {
       method: "DELETE",
     }),
+
+   getByMealId: (mealId: number): Promise<MealItem[]> =>
+    fetchWithAuth(`/mealitems/meal/${mealId}`),
 };

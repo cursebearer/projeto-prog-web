@@ -6,6 +6,8 @@ import { useRouter } from "next/navigation"
 import { dailyLogApi } from "@/api/dailylog"
 import { workoutApi } from "@/api/workout"
 import { mealApi } from "@/api/meal"
+import { mealItemApi } from "@/api/mealItem"
+import { workoutSetApi } from "@/api/workoutSet"
 import { jwtDecode } from "jwt-decode"
 import { Activity, Droplets, Moon, Utensils, Dumbbell, FileText, Eye, Download } from "lucide-react"
 import styles from "../../styles/pages/dashboard.module.scss"
@@ -59,6 +61,8 @@ export default function DashboardPage() {
       const dailyLogs = await dailyLogApi.getByUserId(userId)
       const workoutsData = await workoutApi.getByUserId(userId)
       const mealsData = await mealApi.getByUserId(userId)
+
+    
 
       const summaryData = {
         treinosRealizados: workoutsData.length,

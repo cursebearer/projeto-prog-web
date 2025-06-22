@@ -1,18 +1,20 @@
 import { Model, DataTypes } from 'sequelize';
-import sequelize from '../config/sequelize.js'; 
 
 class Workout extends Model {
   static associate(models) {
-
+    this.hasMany(models.WorkoutSet, { as: 'workout_sets', foreignKey: 'workout_id' });
   }
 }
 
-Workout.init({
-  daily_log_id: DataTypes.INTEGER,
-  titulo: DataTypes.STRING,
-}, {
-  sequelize,
-  modelName: 'Workout',
-});
+export default (sequelize) => {
+  Workout.init({
+    daily_log_id: DataTypes.INTEGER,
+    titulo: DataTypes.STRING,
+  }, {
+    sequelize,
+    modelName: 'Workout',
+    tableName: 'Workouts', 
+  });
 
-export default Workout;
+  return Workout;
+};

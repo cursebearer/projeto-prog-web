@@ -22,4 +22,7 @@ export const workoutSetApi = {
     fetchWithAuth(`/workoutsets/${id}`, {
       method: "DELETE",
     }),
+
+    getByWorkoutId: (workoutId: number): Promise<WorkoutSet[]> =>
+    fetchWithAuth(`/workoutsets/workout/${workoutId}`),
 };

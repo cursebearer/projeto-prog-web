@@ -1,4 +1,4 @@
-import Workout from "../models/workout.js";
+import { Workout, WorkoutSet } from "../config/sequelize.js"; 
 import DailyLog from "../models/dailylog.js";
 
 export const createWorkout = async (req, res) => {
@@ -32,18 +32,28 @@ export const getWorkoutById = async (req, res) => {
 
 export const getWorkoutsByUserId = async (req, res) => {
   try {
-    const { id } = req.params; 
+    const { id } = req.params;
 
     const dailyLogs = await DailyLog.findAll({ where: { user_id: id } });
-    const dailyLogIds = dailyLogs.map(dl => dl.id);
+    const dailyLogIds = dailyLogs.map((dl) => dl.id);
 
     if (dailyLogIds.length === 0) {
       return res.status(404).json({ message: "Nenhum workout encontrado para este usuário" });
     }
 
-    const workouts = await Workout.findAll({ where: { daily_log_id: dailyLogIds } });
+    const workouts = await Workout.findAll({
+      where: { daily_log_id: dailyLogIds },
+      include: [
+        {
+          model: WorkoutSet,
+          as: "workout_sets",  
+        },
+      ],
+    });
+
     res.status(200).json(workouts);
   } catch (error) {
+    console.error("Erro ao buscar workouts:", error);
     res.status(500).json({ message: "Erro ao buscar workouts", error });
   }
 };
