@@ -8,8 +8,9 @@ import Footer from '../components/Footer'
 
 export default function HomePage() {
   return (
+    <>
     <main className={styles.main}>
-      <Header />
+    <Header />
 
       <section className={styles.hero}>
         <div className={styles.heroText}>
@@ -116,6 +117,6 @@ export default function HomePage() {
 
       <Footer />
     </main>
-    
+    </>
   )
 }

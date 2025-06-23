@@ -20,6 +20,12 @@ export const authApi = {
     return response;
   },
 
+  getUserById: async (id: number) => {
+    return fetchWithAuth(`/auth/profile/${id}`, {
+      method: "GET",
+    });
+  },
+
   logout: () => {
     localStorage.removeItem("token");
   },

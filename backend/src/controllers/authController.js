@@ -49,3 +49,18 @@ export const loginUser = async (req, res) => {
   }
 };
 
+export const getUserProfileById = async (req, res) => {
+  try {
+    const user = await User.findByPk(req.params.id, {
+      attributes: ['nome', 'email']
+    });
+
+    if (!user) {
+      return res.status(404).json({ message: 'Usuário não encontrado' });
+    }
+
+    res.status(200).json(user);
+  } catch (error) {
+    res.status(500).json({ message: 'Erro no servidor', error });
+  }
+};

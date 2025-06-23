@@ -1,8 +1,10 @@
 "use client"
 
 import type React from "react"
+import LoggedHeader from "@/components/LoggedHeader"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
+import { authApi } from "@/api/auth"
 import { dailyLogApi } from "@/api/dailylog"
 import { workoutApi } from "@/api/workout"
 import { mealApi } from "@/api/meal"
@@ -36,12 +38,14 @@ export default function DashboardPage() {
   const [summary, setSummary] = useState<any>(null)
   const [workouts, setWorkouts] = useState<any[]>([])
   const [meals, setMeals] = useState<any[]>([])
+  const [user, setUser] = useState<any>(null);
   const router = useRouter()
 
   const fetchData = async () => {
     try {
       const token = localStorage.getItem("token")
       if (!token) {
+        alert("Você precisa estar logado para acessar essa página.")
         router.push("/login")
         return
       }
@@ -55,6 +59,9 @@ export default function DashboardPage() {
       }
 
       const userId = decodedToken.id
+
+      const userData = await authApi.getUserById(userId)
+      setUser(userData)
 
       const dailyLogs = await dailyLogApi.getByUserId(userId)
       const workoutsData = await workoutApi.getByUserId(userId) // Agora inclui workout_sets
@@ -83,9 +90,10 @@ export default function DashboardPage() {
   }, [router])
 
   return (
+    <>
+    <LoggedHeader user={user}/>
     <main className={styles.dashboardContainer}>
-      <h1 className={styles.title}>Dashboard</h1>
-
+      
       <div className={styles.grid}>
         {/* Resumo da Semana */}
         <Card>
@@ -115,8 +123,10 @@ export default function DashboardPage() {
                   <span className={styles.value}>{summary.refeicoesRegistradas}</span>
                 </div>
               </div>
-            ) : (
+            ) : summary === null ? (
               <p className={styles.paragraphMuted}>Carregando...</p>
+            ) : (
+              <p className={styles.paragraphMuted}>Nenhum registro criado</p>
             )}
           </div>
         </Card>
@@ -178,7 +188,7 @@ export default function DashboardPage() {
           <div className={styles.cardContent}>
             <div className={styles.actionsContainer}>
               <button className={styles.primaryButton} onClick={() => router.push("/registro-diario")}>Novo Registro</button>
-              <button className={styles.secondaryButton}>
+              <button className={styles.secondaryButton} onClick={() => router.push("/registros")}>
                 <Eye className={styles.iconSmall} />
                 Ver Registros
               </button>
@@ -208,13 +218,12 @@ export default function DashboardPage() {
                       <span className={styles.date}>{formatDate(workout.createdAt)}</span>
                     </div>
                     <p className={styles.itemDescription}>
-                      {workout.workout_sets?.length || 0} exercícios •{" "}
-                      {workout.workout_sets?.reduce((acc: number, set: any) => acc + set.repeticoes, 0)} séries
+                      {workout.workout_sets?.length || 0} {workout.workout_sets?.length === 1 ? "exercício" : "exercícios"}{" "}
                     </p>
                   </div>
                 ))
               ) : (
-                <p className={styles.paragraphMuted}>Carregando...</p>
+                <p className={styles.paragraphMuted}>Nenhum registro criado</p>
               )}
             </div>
           </div>
@@ -243,12 +252,13 @@ export default function DashboardPage() {
                   </div>
                 ))
               ) : (
-                <p className={styles.paragraphMuted}>Carregando...</p>
+                <p className={styles.paragraphMuted}>Nenhum registro criado</p>
               )}
             </div>
           </div>
         </Card>
       </div>
     </main>
+    </> 
   )
 }

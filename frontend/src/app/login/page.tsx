@@ -21,7 +21,7 @@ export default function LoginPage() {
       await authApi.login({ email, senha: password })
       router.push('/dashboard') 
     } catch (err: any) {
-      setError(err.message || 'Erro ao fazer login')
+      alert('Credenciais inválidas')
     }
   }
 

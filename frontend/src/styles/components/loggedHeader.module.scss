@@ -1,0 +1,420 @@
+@import '../variables.scss';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  border-bottom: 1px solid $tertiary-color;
+  background-color: rgba($secondary-color, 0.95);
+  backdrop-filter: blur(10px);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 6rem;
+  padding: 0 1rem;
+}
+
+.leftSection {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.logoIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  background-color: $primary-color;
+  border-radius: 6px;
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    color: white;
+  }
+}
+
+.logoText {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: $text-color;
+}
+
+.navigation {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.navLink {
+  color: $text-muted;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: $text-color;
+    background-color: $tertiary-color;
+  }
+
+  &.navLinkActive {
+    color: $primary-color;
+    background-color: rgba($primary-color, 0.1);
+  }
+}
+
+// Seção central - Busca
+.searchSection {
+  flex: 1;
+  max-width: 400px;
+  margin: 0 2rem;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+}
+
+.searchContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  svg {
+    position: absolute;
+    left: 0.75rem;
+    color: $text-muted;
+    z-index: 1;
+  }
+}
+
+.searchInput {
+  width: 100%;
+  padding: 0.75rem 0.75rem 0.75rem 2.5rem;
+  background-color: $tertiary-color;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  color: $text-color;
+  font-size: 0.875rem;
+
+  &::placeholder {
+    color: $text-muted;
+  }
+
+  &:focus {
+    outline: none;
+    border-color: $primary-color;
+  }
+}
+
+// Seção direita - Ações do usuário
+.rightSection {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.dateInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: $text-muted;
+  font-size: 0.875rem;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+
+  svg {
+    color: $primary-color;
+  }
+}
+
+.goalInfo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  @media (max-width: 1024px) {
+    display: none;
+  }
+
+  svg {
+    color: $primary-color;
+  }
+}
+
+.goalBadge {
+  background-color: rgba($primary-color, 0.1);
+  color: $primary-color;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid rgba($primary-color, 0.2);
+}
+
+// Botões de ação
+.iconButton {
+  position: relative;
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  color: $text-muted;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover,
+  &.iconButtonActive {
+    background-color: $tertiary-color;
+    color: $text-color;
+  }
+}
+
+.notificationBadge {
+  position: absolute;
+  top: 0.25rem;
+  right: 0.25rem;
+  background-color: $primary-color;
+  color: white;
+  border-radius: 50%;
+  width: 1.25rem;
+  height: 1.25rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profileButton {
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover,
+  &.profileButtonActive {
+    transform: scale(1.05);
+  }
+}
+
+.avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  background-color: $primary-color;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.mobileMenuButton {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  color: $text-muted;
+  transition: all 0.2s ease;
+  display: none;
+
+  @media (max-width: 768px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &:hover {
+    background-color: $tertiary-color;
+    color: $text-color;
+  }
+}
+
+// Ícones
+.iconSmall {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+}
+
+// Dropdowns
+.dropdown {
+  position: relative;
+}
+
+.dropdownMenu {
+  position: absolute;
+  top: calc(100% + 0.5rem);
+  right: 0;
+  background-color: $secondary-color;
+  border: 1px solid $tertiary-color;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  min-width: 280px;
+  z-index: 100;
+}
+
+.dropdownHeader {
+  padding: 1rem 1rem 0.5rem;
+  border-bottom: 1px solid $tertiary-color;
+
+  h3 {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $text-color;
+  }
+}
+
+.profileInfo {
+  h3 {
+    margin: 0 0 0.25rem 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: $text-color;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: $text-muted;
+  }
+}
+
+.dropdownContent {
+  padding: 0.5rem 0;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: $text-muted;
+  text-decoration: none;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: $tertiary-color;
+    color: $text-color;
+  }
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+  }
+}
+
+.dropdownDivider {
+  height: 1px;
+  background-color: $tertiary-color;
+  margin: 0.5rem 0;
+}
+
+.notificationItem {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid $tertiary-color;
+
+  &:last-child {
+    border-bottom: none;
+  }
+
+  &:hover {
+    background-color: $tertiary-color;
+  }
+}
+
+.notificationContent {
+  h4 {
+    margin: 0 0 0.25rem 0;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: $text-color;
+  }
+
+  p {
+    margin: 0;
+    font-size: 0.75rem;
+    color: $text-muted;
+    line-height: 1.4;
+  }
+}
+
+// Menu Mobile
+.mobileMenu {
+  display: none;
+  background-color: $secondary-color;
+  border-top: 1px solid $tertiary-color;
+  padding: 1rem;
+
+  @media (max-width: 768px) {
+    display: block;
+  }
+}
+
+.mobileNavigation {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.mobileNavLink {
+  color: $text-muted;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.75rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+
+  &:hover {
+    color: $text-color;
+    background-color: $tertiary-color;
+  }
+
+  &.mobileNavLinkActive {
+    color: $primary-color;
+    background-color: rgba($primary-color, 0.1);
+  }
+}
+
+.mobileSearchContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  svg {
+    position: absolute;
+    left: 0.75rem;
+    color: $text-muted;
+    z-index: 1;
+  }
+}

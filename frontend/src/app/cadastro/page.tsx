@@ -20,7 +20,7 @@ export default function CadastroPage() {
     setError('')
 
     if (password !== confirmPassword) {
-      setError('As senhas não coincidem')
+      alert('As senhas não coincidem')
       return
     }
 
@@ -28,7 +28,7 @@ export default function CadastroPage() {
       await authApi.register({ nome, email, senha: password })
       router.push('/login') 
     } catch (err: any) {
-      setError(err.message || 'Erro ao criar conta')
+      alert(err.message || 'Erro ao criar conta')
     }
   }
 

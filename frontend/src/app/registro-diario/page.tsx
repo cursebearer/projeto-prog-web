@@ -73,7 +73,7 @@ export default function RegistroDiarioPage() {
 
     } catch (err) {
       console.error("Token inválido:", err)
-      alert("Sessão expirada ou token inválido.")
+      alert("Sessão expirada.")
       router.push("/login")
     }
   }

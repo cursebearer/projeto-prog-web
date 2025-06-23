@@ -16,9 +16,11 @@ export async function fetchWithAuth(endpoint: string, options: RequestInit = {})
   });
 
   if (!response.ok) {
+    if (response.status === 404 || response.status === 204) {
+      return [];
+    }
     const error = await response.json().catch(() => ({}));
     throw new Error(error.message || `Erro na API: ${response.statusText}`);
   }
-
   return response.json();
 }
